@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #eee;
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #333;
+}
+
+button {
+  background-color: #00e676;
+  border: none;
+  color: #121212;
+  padding: 0.3rem 0.6rem;
+  margin: 0.1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #00c853;
+}
