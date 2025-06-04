@@ -1,7 +1,18 @@
+# Node & React
 node_modules/
-.env
-__pycache__/
-*.pyc
-.DS_Store
+frontend/node_modules/
+electron-launcher/node_modules/
+
+# Python
+backend/venv/
+backend/__pycache__/
+backend/ghost_rdp.db
+
+# Build output
 dist/
 build/
+
+# OS/files
+.DS_Store
+.env
+*.pyc
