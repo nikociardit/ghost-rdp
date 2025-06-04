@@ -1,21 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import NavBar from './components/NavBar';
+import DashboardPage from './pages/DashboardPage';
+import UsersPage from './pages/UsersPage';
+import TasksPage from './pages/TasksPage';
+import AlertsPage from './pages/AlertsPage';
+import SupportPage from './pages/SupportPage';
+import VPNPage from './pages/VPNPage';
+import WindowsUsersPage from './pages/WindowsUsersPage';
+import LogsPage from './pages/LogsPage';
+import SetupPage from './pages/SetupPage';
 
-function App() {
-  const [backendStatus, setBackendStatus] = useState(null);
-
-  useEffect(() => {
-    axios.get('/api/status')
-      .then(response => setBackendStatus(response.data.message))
-      .catch(() => setBackendStatus('Failed to connect to backend.'));
-  }, []);
-
+export default function App() {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'Arial', backgroundColor: '#121212', color: '#eee', minHeight: '100vh' }}>
-      <h1>ghost-rdp Frontend</h1>
-      <p>Status: {backendStatus || 'Loading...'}</p>
+    <div style={{ display: 'flex', minHeight: '100vh' }}>
+      <Sidebar />
+      <div style={{ flexGrow: 1, backgroundColor: '#121212' }}>
+        <NavBar />
+        <main style={{ padding: '1rem 2rem' }}>
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/users" element={<UsersPage />} />
+            <Route path="/tasks" element={<TasksPage />} />
+            <Route path="/alerts" element={<AlertsPage />} />
+            <Route path="/support" element={<SupportPage />} />
+            <Route path="/vpn" element={<VPNPage />} />
+            <Route path="/windows-users" element={<WindowsUsersPage />} />
+            <Route path="/logs" element={<LogsPage />} />
+            <Route path="/setup" element={<SetupPage />} />
+          </Routes>
+        </main>
+      </div>
     </div>
   );
 }
-
-export default App;
