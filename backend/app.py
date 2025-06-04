@@ -507,5 +507,18 @@ def get_setup_status():
 def healthz():
     return jsonify({'status': 'healthy'}), 200
 
+@app.route('/api/dashboard-stats')
+def dashboard_stats():
+    user_count = User.query.count()
+    task_count = Task.query.count()
+    open_ticket_count = SupportTicket.query.filter(SupportTicket.status != 'closed').count()
+    wg_peer_count = WireGuardPeer.query.count()
+    return jsonify({
+        'user_count': user_count,
+        'task_count': task_count,
+        'open_ticket_count': open_ticket_count,
+        'wg_peer_count': wg_peer_count
+    })
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
